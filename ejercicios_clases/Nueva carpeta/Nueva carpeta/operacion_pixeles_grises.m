@@ -1,0 +1,12 @@
+clear all;
+clc;
+a=imread('c:\paisaje.jpg');
+gris=rgb2gray(a);
+pmax=max(max(gris));
+c=pmax-gris;
+subplot(1,2,1);
+imshow(a);
+title('Imagen Original');
+subplot(1,2,2);
+imshow(c);
+title('Complemento de la imagen');

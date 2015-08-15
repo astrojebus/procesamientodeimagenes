@@ -1,0 +1,23 @@
+a=imread('C:\Imagenes\figura.jpg');
+figure;
+imshow(a);
+eg=rgb2gray(a);
+%figure;
+%imshow(eg);
+umbral=graythresh(eg);
+bn=im2bw(eg,umbral);
+%figure;
+%imshow(bn);
+[L num]=bwlabel(bn);
+msgbox(sprintf('El numero de objetos: %d', num), 'Mensaje');
+propiedades = regionprops(L);
+b=500;
+while((b>num)||(b<=0))
+    b=input('ingrese un numero: ');
+end
+a=propiedades(b).Area;
+msgbox(sprintf('Area: %0.2f', a), 'Area');
+a=propiedades(b).Centroid;
+msgbox(sprintf('Centro de gravedad: \nX: %0.2f \nY: %0.2f', a(1),a(2)), 'Centro de gravedad');
+a=propiedades(b).BoundingBox;
+msgbox(sprintf('BoudingBox: \nXI: %0.2f\nXF: %0.2f\nYI: %0.2f\nYF: %0.2f', a(1),a(2),a(3),a(4)), 'BoudingBox');

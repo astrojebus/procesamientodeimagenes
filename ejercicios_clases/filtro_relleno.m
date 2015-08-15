@@ -1,0 +1,11 @@
+a=imread('c:\paisaje.jpg');
+%m=[0 0 0;0 0 0;0 0 0;0 0 1;0 0 0;0 0 0;0 0 0; 0 0 0];
+m=zeros(9,9);
+m(5,5)=1;
+f=imfilter(a,m,10,'full');
+subplot(1,2,1);
+imshow(a);
+title('imagen original');
+subplot(1,2,2);
+imshow(f);
+title('imagen con relleno');

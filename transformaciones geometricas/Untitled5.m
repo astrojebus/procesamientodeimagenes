@@ -1,0 +1,27 @@
+I=imread('p.jpg');
+II=rgb2gray(I); II=im2bw(II);
+I90=imread('p.jpg');
+II90=rgb2gray(I90); II90=im2bw(II90);
+IIc=imcomplement(II);
+[filas,columnas]=find(IIc==1);
+I3=[filas,columnas];
+[U, v]=kmeans(I3,3); xy=round(v);
+II90c=imcomplement(II90);
+[filas,columnas]=find(II90c==0);
+I4=[filas,columnas];
+[U, v]=kmeans(I4,3);
+xy90=round(v);
+tform = maketform('affine',xy,xy90);
+[x,y] = tforminv(tform, xy90(:,1), xy90(:,2));
+[u,v] = tformfwd(tform,x,y);
+figure; imshow(II); hold on;
+plot(xy(:,1),xy(:,2),'o',x,y,'*');
+figure; imshow(II90); hold on;
+plot(xy90(:,1),xy90(:,2),'o',u,v,'*');
+xy90p=[xy90(1,:) 1; xy90(2,:) 1;
+xy90(3,:) 1];
+xyp=[xy(1,:) 1;xy(2,:) 1;xy(3,:) 1];
+T=xyp\xy90p;
+tform = maketform('affine',T);
+II90r=imtransform(II,tform);
+figure; imshow(II90r)

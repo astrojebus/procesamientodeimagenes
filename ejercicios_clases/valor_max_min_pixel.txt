@@ -1,0 +1,7 @@
+% se lea la imagen.
+A = imread(‘c:\pca.jpg’);
+% convierte la imagen a escala de grises
+B=rgb2gray(A);
+% se encuentra el valor máximo
+pmax=max(max(B));% se encuentra el valor mínimo
+pmin=min(min(B));

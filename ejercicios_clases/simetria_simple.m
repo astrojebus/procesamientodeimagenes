@@ -1,0 +1,12 @@
+a=imread('c:\paisaje.jpg');
+%m=[0 0 0;0 0 0;0 0 0;0 0 1;0 0 0;0 0 0;0 0 0; 0 0 0];
+[m n]=size(a);
+w=zeros(1,194);
+w(1,194)=1;
+f=imfilter(a,w,'symmetric','full');
+subplot(1,2,1);
+imshow(a);
+title('imagen original');
+subplot(1,2,2);
+imshow(f);
+title('imagen con relleno basado en espejo');

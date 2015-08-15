@@ -1,0 +1,11 @@
+a=imread('c:\paisaje.jpg');
+%m=[0 0 0;0 0 0;0 0 0;0 0 1;0 0 0;0 0 0;0 0 0; 0 0 0];
+a1=rgb2gray(a);
+fun=@(x)max(x(:));
+b=nlfilter(a1,[3 3],fun);
+subplot(1,2,1);
+imshow(a);
+title('imagen original');
+subplot(1,2,2);
+imshow(b);
+title('imagen con relleno maximo');

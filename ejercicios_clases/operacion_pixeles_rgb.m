@@ -1,0 +1,13 @@
+clear all;
+clc;
+a=imread('c:\paisaje.jpg');
+pmax=max(max(a));
+c(:,:,1)=pmax(:,:,1)-a(:,:,1);
+c(:,:,2)=pmax(:,:,2)-a(:,:,2);
+c(:,:,3)=pmax(:,:,3)-a(:,:,3);
+subplot(1,2,1);
+imshow(a);
+title('Imagen Original');
+subplot(1,2,2);
+imshow(c);
+title('Complemento de la imagen');
